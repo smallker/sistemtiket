@@ -147,27 +147,3 @@ class _FormState extends State<_Form> {
     }
   }
 }
-
-//  Menampilkan dialog lupa password
-class TextFieldAlertDialog {
-  TextEditingController email = TextEditingController();
-  _displayDialog(BuildContext context) async {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('Lupa kata sandi'),
-            content: TextField(
-              controller: email,
-              decoration: InputDecoration(hintText: "Masukkan email anda"),
-            ),
-            actions: <Widget>[
-              FlatButton(
-                child: Text('Reset password'),
-                onPressed: () {},
-              )
-            ],
-          );
-        });
-  }
-}

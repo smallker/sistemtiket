@@ -3,10 +3,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ConnectDB {
   var settings = new ConnectionSettings(
-      host: '192.168.0.3',
+      host: '139.180.212.45',
       port: 3306,
-      user: 'sistemtiket',
-      password: 'sistemtiket',
+      user: 'trial',
+      password: 'trial123',
       db: 'sistemtiket');
 
   Future<bool> register(
@@ -19,7 +19,7 @@ class ConnectDB {
         return false;
       } catch (error) {
         conn.query(
-            'insert into user (nama,email,telepon,password,tiket) value ("${name}","${email}","${telepon}","${password}","0")');
+            'insert into user (nama,email,telepon,password,tiket) value ("$name","$email","$telepon","$password","0")');
         return true;
       }
     });
@@ -121,7 +121,7 @@ class ConnectDB {
     return query.toList();
   }
 
-  Future<bool> cancelOrder(
+  Future<void> cancelOrder(
     String email,
     String id,
     String dokter,

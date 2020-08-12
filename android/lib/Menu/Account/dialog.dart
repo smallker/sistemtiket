@@ -3,13 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sistemtiket/services/Database.dart';
 
-import '../../Menu.dart';
 
 class CustomDialog {
   // BuildContext context;
   // NamePhoneDialog(this.context);
 
-  @override
   namaDialog(BuildContext context) async {
     TextEditingController nama = TextEditingController();
     var prefs = await SharedPreferences.getInstance();

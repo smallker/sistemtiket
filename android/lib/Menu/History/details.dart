@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sistemtiket/Menu.dart';
-import 'package:sistemtiket/Menu/History.dart';
 import 'package:sistemtiket/services/Database.dart';
 import '../../services/View.dart';
 
