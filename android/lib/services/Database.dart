@@ -102,10 +102,31 @@ class ConnectDB {
     if (kuota > 0) {
       await conn.query(
           'update $poli set kuota = kuota - 1 where dokter = ?', [dokter]);
-      var history = await conn.query(
-          'insert into history (email,dokter,harga) value ("$email","$dokter","$harga")');
+      var lastData = await conn.query('select waktu from history order by id desc limit 1');
+      try{
+        print(lastData.toList()[0]['waktu']);
+                int timestamp = lastData.toList()[0]['waktu'];
+        var waktu = DateTime.fromMillisecondsSinceEpoch(timestamp).add(Duration(hours: 1));
+        var _waktu = waktu.millisecondsSinceEpoch;
+        var history = await conn.query(
+          'insert into history (email,dokter,harga,waktu) value ("$email","$dokter","$harga","$_waktu")');
+      // var timestamp  = await conn.query('select waktu from history order by id desc limit 1');
+      // print(DateTime.now().millisecondsSinceEpoch);
       await conn.query(
           'update user set tiket=${history.insertId} where email = ?', [email]);
+
+        
+
+      }
+      catch(e){
+        int waktu = DateTime.now().millisecondsSinceEpoch;
+        print(waktu);
+        var history = await conn.query(
+          'insert into history (email,dokter,harga,waktu) value ("$email","$dokter","$harga","$waktu")');
+        await conn.query(
+          'update user set tiket=${history.insertId} where email = ?', [email]);
+        
+      }
       return true;
     } else
       return false;

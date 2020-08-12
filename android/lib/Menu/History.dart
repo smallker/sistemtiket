@@ -1,5 +1,3 @@
-import 'dart:async';
-import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:sistemtiket/Menu/History/details.dart';
 import '../services/Database.dart';
@@ -20,14 +18,16 @@ class _History extends State<History> {
   void initState() {
     super.initState();
     ConnectDB().getHistory(widget.user).then((value) {
+      print(value);
       value.forEach((element) {
+        print(element);
         setState(() {
-          var time = element['waktu'].toString().split('.')[0];
-          var parsetime = DateTime.parse(time).add(Duration(hours: 1));
+          var time = element['waktu'];
+          var parsetime = DateTime.fromMillisecondsSinceEpoch(time);
           id.add(element['id'].toString());
           waktu.add(parsetime.toString());
           dokter.add(element['dokter'].toString());
-          // harga.add(element['harga']);
+          harga.add(element['harga']);
         });
       });
     });

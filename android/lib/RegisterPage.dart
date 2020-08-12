@@ -45,7 +45,7 @@ class _RegisterPage extends State<RegisterPage> {
               top: View.y / 10,
               left: View.x / 4,
               width: View.blockX * 50,
-              child: Lottie.asset('assets/heart.json'),
+              child: Image.asset('assets/ic.png')
             ),
             Positioned(
                 top: View.blockY * 35,

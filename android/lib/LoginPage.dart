@@ -29,7 +29,7 @@ class LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     View().init(context);
     return Scaffold(
-      backgroundColor: CustomColor().primary80.withOpacity(0.3),
+      backgroundColor: Color(0xE0002E32),
       body: Center(
         child: Stack(
           children: <Widget>[
@@ -37,7 +37,7 @@ class LoginPageState extends State<LoginPage> {
               top: View.y / 5,
               left: View.x / 4,
               width: View.blockX * 50,
-              child: Lottie.asset('assets/heart.json'),
+              child: Image.asset('assets/ic.png'),
             ),
             Positioned(
                 top: View.y / 2.1,
@@ -84,19 +84,6 @@ class LoginPageState extends State<LoginPage> {
                     MaterialPageRoute(builder: (context) => RegisterPage())),
               ),
             ),
-            // Positioned(
-            //   top: View.blockY * 80,
-            //   left: View.blockX * 15,
-            //   child: FlatButton(
-            //     padding: EdgeInsets.all(0),
-            //     child: Text('Lupa kata sandi?',
-            //         style: TextStyle(
-            //             color: Colors.white, fontSize: View.blockX * 4.5)),
-            //     onPressed: () {
-            //       TextFieldAlertDialog()._displayDialog(context);
-            //     },
-            //   ),
-            // )
           ],
         ),
       ),
