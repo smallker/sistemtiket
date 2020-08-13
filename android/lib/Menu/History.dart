@@ -23,9 +23,9 @@ class _History extends State<History> {
         print(element);
         setState(() {
           var time = element['waktu'];
-          var parsetime = DateTime.fromMillisecondsSinceEpoch(time);
+          var parsetime = DateTime.fromMillisecondsSinceEpoch(time).toString().split('.');
           id.add(element['id'].toString());
-          waktu.add(parsetime.toString());
+          waktu.add(parsetime[0]);
           dokter.add(element['dokter'].toString());
           harga.add(element['harga']);
         });
